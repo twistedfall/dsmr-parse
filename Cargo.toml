@@ -28,3 +28,6 @@ log = "0.4"
 matches = "0.1"
 jiff = { version = "0.2", default-features = false, features = ["tzdb-zoneinfo"] }
 serialport = { version = "4", default-features = false }
+
+[package.metadata.docs.rs]
+features = ["jiff", "chrono"]
