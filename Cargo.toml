@@ -28,4 +28,4 @@ log = "0.4"
 [dev-dependencies]
 matches = "0.1"
 jiff = { version = "0.2", default-features = false, features = ["tzdb-zoneinfo"] }
-serialport = "4"
+serialport = { version = "4", default-features = false }
