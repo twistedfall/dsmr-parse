@@ -7,7 +7,6 @@ keywords = ["dsmr", "energy", "netherlands", "electricity", "automation"]
 categories = ["parser-implementations", "encoding"]
 authors = ["Pro <twisted.fall@gmail.com>"]
 license = "MIT OR Apache-2.0"
-publish = ["crates-local"]
 documentation = "https://docs.rs/dsmr-parse"
 repository = "https://github.com/twistedfall/dsmr-parse"
 exclude = ["/.github", "/tools", "/docs", ".gitignore", "release.toml", "rustfmt.toml"]
