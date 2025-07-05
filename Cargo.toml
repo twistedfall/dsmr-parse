@@ -1,6 +1,6 @@
 [package]
 name = "dsmr-parse"
-version = "0.4.0"
+version = "0.4.1"
 edition = "2024"
 description = "Library for parsing DSMR telegrams"
 keywords = ["dsmr", "energy", "netherlands", "electricity", "automation"]
