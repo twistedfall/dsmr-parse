@@ -48,11 +48,11 @@
 //!
 //! [P1 Companion Standard 5.0.2](https://www.netbeheernederland.nl/publicatie/dsmr-502-p1-companion-standard)
 
-pub use cosem_value::*;
 pub use telegram::*;
 pub use tst::*;
+pub use unit_value::*;
 
-mod cosem_value;
 mod line_reader;
 mod telegram;
 mod tst;
+mod unit_value;

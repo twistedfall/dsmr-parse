@@ -6,8 +6,8 @@ pub use error::Error;
 use log::{trace, warn};
 
 use crate::Tst;
-use crate::cosem_value::UnitValue;
 use crate::line_reader::LineReader;
+use crate::unit_value::UnitValue;
 
 mod error;
 
@@ -54,6 +54,9 @@ pub struct Telegram {
 }
 
 impl Telegram {
+	/// Try to read a single telegram from a [Read] source
+	///
+	/// See [crate-level](crate) documentation for more details.
 	pub fn read_from(src: impl Read) -> Result<Option<Self>, Error> {
 		enum ParserState {
 			WaitingForHeader,

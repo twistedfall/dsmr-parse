@@ -1,15 +1,18 @@
 use core::str;
 
+/// A point in time as reported by the meter
+///
+/// `year` is normalized from 2 digits by mapping it to 1969..=2068 range
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Tst {
-	/// Year normalized from 2 digits by mapping it to 1969..=2068 range
+	/// Year, normalized from 2 digits by mapping it to 1969..=2068 range
 	pub year: u16,
 	pub month: u8,
 	pub day: u8,
 	pub hour: u8,
 	pub minute: u8,
 	pub second: u8,
-	/// DST active flag
+	/// True if Daylight Saving Time is active
 	pub dst: bool,
 }
 
@@ -34,6 +37,7 @@ impl Tst {
 		})
 	}
 
+	/// Convert current [Tst] to [jiff::Zoned] in the indicated timezone
 	#[cfg(feature = "jiff")]
 	pub fn to_jiff(&self, timezone: &jiff::tz::TimeZone) -> Option<jiff::Zoned> {
 		jiff::civil::DateTime::new(
@@ -57,6 +61,7 @@ impl Tst {
 		})
 	}
 
+	/// Convert current [Tst] to [chrono::DateTime] in the indicated timezone
 	#[cfg(feature = "chrono")]
 	pub fn to_chrono<Tz: chrono::TimeZone>(&self, timezone: &Tz) -> Option<chrono::DateTime<Tz>> {
 		let d = timezone.from_local_datetime(&chrono::NaiveDateTime::new(
