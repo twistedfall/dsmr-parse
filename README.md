@@ -17,7 +17,7 @@ cargo add dsmr-parse
 Or add to your Cargo.toml:
 ```toml
 [dependencies]
-dsmr-parse = "0.4.1"
+dsmr-parse = "0.4.2"
 ```
 
 ## dsmr-parse
