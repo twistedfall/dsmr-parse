@@ -33,11 +33,11 @@ fn test_parse_tst() {
 fn test_to_jiff() {
 	let tz = jiff::tz::TimeZone::get("Europe/Amsterdam").expect("Can't load Amsterdam timezone");
 	assert_eq!(
-		jiff::Timestamp::from_second(1540686600).unwrap().to_zoned(tz.clone()),
+		jiff::Timestamp::from_second(1540686600).unwrap().to_zoned_datetime(tz.clone()),
 		Tst::try_from_bytes(b"181028023000S").unwrap().to_jiff(&tz).unwrap()
 	);
 	assert_eq!(
-		jiff::Timestamp::from_second(1540690200).unwrap().to_zoned(tz.clone()),
+		jiff::Timestamp::from_second(1540690200).unwrap().to_zoned_datetime(tz.clone()),
 		Tst::try_from_bytes(b"181028023000W").unwrap().to_jiff(&tz).unwrap()
 	);
 }

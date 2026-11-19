@@ -37,9 +37,9 @@ impl Tst {
 		})
 	}
 
-	/// Convert current [Tst] to [jiff::Zoned] in the indicated timezone
+	/// Convert current [Tst] to [jiff::ZonedDateTime] in the indicated timezone
 	#[cfg(feature = "jiff")]
-	pub fn to_jiff(&self, timezone: &jiff::tz::TimeZone) -> Option<jiff::Zoned> {
+	pub fn to_jiff(&self, timezone: &jiff::tz::TimeZone) -> Option<jiff::ZonedDateTime> {
 		jiff::civil::DateTime::new(
 			i16::try_from(self.year).unwrap_or(i16::MAX),
 			i8::try_from(self.month).unwrap_or(i8::MAX),
@@ -49,7 +49,7 @@ impl Tst {
 			i8::try_from(self.second).unwrap_or(i8::MAX),
 			0,
 		)
-		.map(|d| timezone.to_ambiguous_zoned(d))
+		.map(|d| timezone.to_ambiguous_zoned_datetime(d))
 		.ok()
 		.and_then(|d| {
 			let strategy = if self.dst {
