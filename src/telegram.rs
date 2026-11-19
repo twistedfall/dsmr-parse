@@ -235,7 +235,7 @@ struct ParsedLine<'l> {
 }
 
 impl ParsedLine<'_> {
-	fn parse(line: &[u8]) -> Option<ParsedLine> {
+	fn parse(line: &[u8]) -> Option<ParsedLine<'_>> {
 		#[expect(clippy::enum_variant_names)]
 		enum State {
 			WaitingForValue,
@@ -295,7 +295,7 @@ struct ParsedObis<'l> {
 }
 
 impl ParsedObis<'_> {
-	fn parse(line: &[u8]) -> Option<(ParsedObis, &[u8])> {
+	fn parse(line: &[u8]) -> Option<(ParsedObis<'_>, &[u8])> {
 		enum State {
 			WaitingForObisMedium,
 			ReadingObisMedium,
