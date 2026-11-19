@@ -60,24 +60,6 @@ impl Tst {
 			d.disambiguate(strategy).ok()
 		})
 	}
-
-	/// Convert current [Tst] to [chrono::DateTime] in the indicated timezone
-	#[cfg(feature = "chrono")]
-	pub fn to_chrono<Tz: chrono::TimeZone>(&self, timezone: &Tz) -> Option<chrono::DateTime<Tz>> {
-		let d = timezone.from_local_datetime(&chrono::NaiveDateTime::new(
-			chrono::NaiveDate::from_ymd_opt(i32::from(self.year), u32::from(self.month), u32::from(self.day))?,
-			chrono::NaiveTime::from_hms_opt(u32::from(self.hour), u32::from(self.minute), u32::from(self.second))?,
-		));
-		match d {
-			chrono::LocalResult::None => None,
-			chrono::LocalResult::Single(d) => Some(d),
-			chrono::LocalResult::Ambiguous(min, max) => Some(if self.dst {
-				min
-			} else {
-				max
-			}),
-		}
-	}
 }
 
 fn normalize_two_digit_year(year: u16) -> u16 {
